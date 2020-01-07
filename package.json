@@ -1,0 +1,27 @@
+{
+  "name": "ocean-shipments-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developer-abhi7/ocean-shipments-backend.git"
+  },
+  "keywords": [
+    "ocean"
+  ],
+  "author": "abhi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/developer-abhi7/ocean-shipments-backend/issues"
+  },
+  "homepage": "https://github.com/developer-abhi7/ocean-shipments-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.5"
+  }
+}
