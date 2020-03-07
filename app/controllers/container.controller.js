@@ -11,7 +11,7 @@ module.exports = {
         }],
         order: [
           ['createdAt', 'DESC'],
-          [{ model: Student, as: 'students' }, 'createdAt', 'DESC'],
+          [{ model: Shipment, as: 'shipments' }, 'createdAt', 'DESC'],
         ],
       })
       .then((containers) => res.status(200).send(containers))
@@ -38,19 +38,28 @@ module.exports = {
   },
 
   add(req, res) {
+    console.log(req.body);
     return Container
       .create({
-        class_name: req.body.class_name,
+        status: req.body.status,
+        volume_limit: req.body.volume_limit,
+        weight_limit: req.body.weight_limit,
+        volume_filled: req.body.volume_filled,
+        weight_filled: req.body.weight_filled
       })
       .then((container) => res.status(201).send(container))
       .catch((error) => res.status(400).send(error));
   },
 
-  addWithStudents(req, res) {
+  addWithShipments(req, res) {
     return Container
       .create({
-        class_name: req.body.class_name,
-        students: req.body.students,
+        status: req.body.status,
+        volume_limit: req.body.volume_limit,
+        weight_limit: req.body.weight_limit,
+        volume_filled: req.body.volume_filled,
+        weight_filled: req.body.weight_filled,
+        shipment_id: req.body.shipments
       }, {
       	include: [{
           model: Shipment,
@@ -77,7 +86,11 @@ module.exports = {
         }
         return container
           .update({
-            class_name: req.body.class_name || container.class_name,
+            status: req.body.status || container.status,
+            volume_limit: req.body.volume_limit || container.volume_limit,
+            weight_limit: req.body.weight_limit || container.weight_limit,
+            volume_filled: req.body.volume_filled || container.volume_filled,
+            weight_filled: req.body.weight_filled || container.weight_filled
           })
           .then(() => res.status(200).send(container))
           .catch((error) => res.status(400).send(error));

@@ -5,8 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     volume_limit: DataTypes.INTEGER,
     weight_limit: DataTypes.INTEGER,
     volume_filled: DataTypes.INTEGER,
-    weight_filled: DataTypes.INTEGER,
-    shipment_id: DataTypes.INTEGER
+    weight_filled: DataTypes.INTEGER
   }, {});
   Container.associate = function(models) {
     // associations can be defined here

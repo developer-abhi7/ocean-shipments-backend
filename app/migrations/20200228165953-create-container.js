@@ -23,9 +23,6 @@ module.exports = {
       weight_filled: {
         type: Sequelize.INTEGER
       },
-      shipment_id: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

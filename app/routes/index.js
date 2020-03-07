@@ -33,7 +33,7 @@ router.post('/api/shipment', shipmentController.add);
 router.put('/api/shipment/:id', shipmentController.update);
 router.delete('/api/shipment/:id', shipmentController.delete);
 
-
+router.post('/api/container/add_with_shipments', containerController.addWithShipments);
 
 
 module.exports = router;
