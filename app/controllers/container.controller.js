@@ -59,7 +59,7 @@ module.exports = {
         weight_limit: req.body.weight_limit,
         volume_filled: req.body.volume_filled,
         weight_filled: req.body.weight_filled,
-        shipment_id: req.body.shipments
+        shipments: req.body.shipments
       }, {
       	include: [{
           model: Shipment,
