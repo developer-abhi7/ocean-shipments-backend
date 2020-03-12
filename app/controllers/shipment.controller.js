@@ -11,7 +11,7 @@ module.exports = {
         }],
         order: [
           ['createdAt', 'DESC'],
-          [{ model: Course, as: 'courses' }, 'createdAt', 'DESC'],
+          [{ model: Container, as: 'container' }, 'createdAt', 'DESC'],
         ],
       })
       .then((shipments) => res.status(200).send(shipments))
@@ -40,28 +40,11 @@ module.exports = {
   add(req, res) {
     return Shipment
       .create({
-        classroom_id: req.body.classroom_id,
-        student_name: req.body.student_name,
+        weight: req.body.weight,
+        volume: req.body.volume,
+        container_id: req.body.container_id
       })
       .then((shipment) => res.status(201).send(shipment))
-      .catch((error) => res.status(400).send(error));
-  },
-
-  addCourse(req, res) {
-    return Shipment
-      .findById(req.body.student_id, {
-        include: [{
-          model: Container,
-          as: 'container'
-        }],
-      })
-      .then((shipment) => {
-        if (!shipment) {
-          return res.status(404).send({
-            message: 'Shipment Not Found',
-          });
-        }
-      })
       .catch((error) => res.status(400).send(error));
   },
 
@@ -81,7 +64,8 @@ module.exports = {
         }
         return shipment
           .update({
-            student_name: req.body.student_name || container.student_name,
+            weight: req.body.weight || container.weight,
+            volume: req.body.volume || container.volume
           })
           .then(() => res.status(200).send(shipment))
           .catch((error) => res.status(400).send(error));
