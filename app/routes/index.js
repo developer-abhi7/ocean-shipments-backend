@@ -4,6 +4,7 @@ var router = express.Router();
 const noteController = require('../controllers').note_ctrl;
 const containerController = require('../controllers').container_ctrl;
 const shipmentController = require('../controllers').shipment_ctrl;
+const usersController = require('../controllers').user_ctrl;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -35,5 +36,8 @@ router.delete('/api/shipment/:id', shipmentController.delete);
 
 router.post('/api/container/add_with_shipments', containerController.addWithShipments);
 
+
+router.post('/api/users/login', usersController.userAuthentication);
+router.post('/api/users/register', usersController.userRegister);
 
 module.exports = router;
